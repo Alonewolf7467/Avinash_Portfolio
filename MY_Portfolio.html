@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avinash T - Full Stack Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Raleway");
+
+        :root {
+            --glow-color: hsl(186 100% 69%);
+        }
+
+        .glowing-btn {
+            margin-bottom: 20px;
+            position: relative;
+            color: var(--glow-color);
+            cursor: pointer;
+            padding: 0.15em 1em;
+            border: 0.15em solid var(--glow-color);
+            border-radius: 0.45em;
+            background: none;
+            perspective: 1em;
+            font-family: "Raleway", sans-serif;
+            font-size: 1em;
+            font-weight: 500;
+            letter-spacing: 1em;
+
+            -webkit-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+                0px 0px 0.5em 0px var(--glow-color);
+            -moz-box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+                0px 0px 0.5em 0px var(--glow-color);
+            box-shadow: inset 0px 0px 0.5em 0px var(--glow-color),
+                0px 0px 0.5em 0px var(--glow-color);
+            animation: border-flicker 2s linear infinite;
+        }
+
+        .glowing-txt {
+            float: left;
+            margin-right: -0.8em;
+            -webkit-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+                0 0 0.45em var(--glow-color);
+            -moz-text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3),
+                0 0 0.45em var(--glow-color);
+            text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.3), 0 0 0.45em var(--glow-color);
+            animation: text-flicker 3s linear infinite;
+        }
+
+        .faulty-letter {
+            opacity: 0.5;
+            animation: faulty-flicker 2s linear infinite;
+        }
+
+        .glowing-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            opacity: 0.7;
+            filter: blur(1em);
+            transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+            background: var(--glow-color);
+            pointer-events: none;
+        }
+
+        .glowing-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0;
+            z-index: -1;
+            background-color: var(--glow-color);
+            box-shadow: 0 0 2em 0.2em var(--glow-color);
+            transition: opacity 100ms linear;
+        }
+
+        .glowing-btn:hover {
+            color: rgba(0, 0, 0, 0.8);
+            text-shadow: none;
+            animation: none;
+        }
+
+        .glowing-btn:hover .glowing-txt {
+            animation: none;
+        }
+
+        .glowing-btn:hover .faulty-letter {
+            animation: none;
+            text-shadow: none;
+            opacity: 1;
+        }
+
+        .glowing-btn:hover:before {
+            filter: blur(1.5em);
+            opacity: 1;
+        }
+
+        .glowing-btn:hover:after {
+            opacity: 1;
+        }
+
+        @keyframes faulty-flicker {
+            0% {
+                opacity: 0.1;
+            }
+
+            2% {
+                opacity: 0.1;
+            }
+
+            4% {
+                opacity: 0.5;
+            }
+
+            19% {
+                opacity: 0.5;
+            }
+
+            21% {
+                opacity: 0.1;
+            }
+
+            23% {
+                opacity: 1;
+            }
+
+            80% {
+                opacity: 0.5;
+            }
+
+            83% {
+                opacity: 0.4;
+            }
+
+            87% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes text-flicker {
+            0% {
+                opacity: 0.1;
+            }
+
+            2% {
+                opacity: 1;
+            }
+
+            8% {
+                opacity: 0.1;
+            }
+
+            9% {
+                opacity: 1;
+            }
+
+            12% {
+                opacity: 0.1;
+            }
+
+            20% {
+                opacity: 1;
+            }
+
+            25% {
+                opacity: 0.3;
+            }
+
+            30% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 0.7;
+            }
+
+            72% {
+                opacity: 0.2;
+            }
+
+            77% {
+                opacity: 0.9;
+            }
+
+            100% {
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes border-flicker {
+            0% {
+                opacity: 0.1;
+            }
+
+            2% {
+                opacity: 1;
+            }
+
+            4% {
+                opacity: 0.1;
+            }
+
+            8% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 0.7;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .glowing-btn {
+                font-size: 1em;
+            }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar {
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            padding: 15px;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            background-color: #000000;
+        }
+
+        .profile-card {
+            border: 2px solid #00f7ff;
+            border-radius: 10px;
+            margin-top: -55px 0;
+            background-color: #ffffff;
+            scrollbar-width: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 20%;
+            margin: 15px auto;
+            display: block;
+            border: 2px solid #00f7ff;
+
+        }
+
+        .profile-image:hover {
+            transform: scale(1.1);
+            margin-bottom: 10px;
+            transition: transform 0.4s;
+
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+        }
+
+        .social-icons img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+
+        .main-content {
+            margin-left: 60%;
+            padding: -50px;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            border-bottom: 2px solid #05fffb;
+            /* Optional: Add a bottom border */
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #00f7ff;
+            transform: scale(1.1);
+        }
+
+        /* Button styling and animation */
+        #dark-mode-toggle {
+            color: white;
+            border-color: #00f7ff;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+
+        #dark-mode-toggle:hover {
+            background-color: #00f7ff;
+            color: black;
+            transform: scale(1.1);
+        }
+
+        /* Custom style for the hamburger button */
+        .navbar-toggler {
+            border: none;
+            background-color: rgb(0, 255, 242);
+            color: #000000;
+            /* Red background for the hamburger button */
+        }
+
+        .navbar-toggler .navbar-toggler-icon {
+            background-image: none;
+            /* Remove default icon */
+        }
+
+        .navbar-toggler::before {
+            content: '☰';
+            /* Add custom icon */
+            font-size: 24px;
+            color: white;
+            /* Color of the hamburger icon */
+        }
+
+        section {
+            display: none;
+            font-size: larger;
+            background-color: #000000;
+            min-height: calc(100vh - 70px);
+        }
+
+        section.active {
+            display: block;
+        }
+
+        .card {
+            margin-bottom: 10px;
+            background-color: #000000;
+            transition: transform 0.3s;
+            border-radius: 14px;
+        }
+
+        .card-body {
+            margin-top: 10px;
+        }
+
+        .list-group-item {
+            background-color: #000000;
+            color: #05fffb;
+            padding: 10px;
+            margin: 13px;
+            border-color: #05fffb;
+            border-radius: 16px;
+        }
+
+        .list-group-item:hover {
+            background-color: #00f7ff;
+            color: #000000;
+            padding: 10px;
+            margin: 13px;
+            border-color: #05fffb;
+            border-radius: 16px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card,
+        .project-card {
+            height: 100%;
+            border-color: #05fffb;
+            border-radius: 10px;
+        }
+
+        .skill-card:hover {
+            height: 100%;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            background-color: #05fffb;
+            border-color: #05fffb;
+
+        }
+
+        .project-card:hover {
+            height: 100%;
+            border-radius: 10px;
+            color: rgb(0, 0, 0);
+            background-color: #05fffb;
+            border-color: #05fffb;
+
+        }
+
+        .social-media {
+            display: flex;
+            justify-content: center;
+            border-color: #05fffb;
+
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            border-color: #05fffb;
+
+        }
+
+        .social-media img {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s;
+        }
+
+        .social-media img:hover {
+            transform: scale(1.2);
+        }
+
+        .dark-mode {
+            background-color: #000000;
+            color: #05fffb;
+        }
+
+        .dark-mode .sidebar,
+        .dark-mode .navbar,
+        .dark-mode .card,
+        .main-content,
+        .profile-card {
+            background-color:black;
+            color: #00eaff;
+        }
+
+        .dark-mode .nav-link {
+            color: #05fffb;
+        }
+
+        .dark-mode .nav-link.active {
+            color: #05fffb;
+            font-weight: bold;
+        }
+
+        .dark-mode .btn-outline-secondary {
+            color: #05fffb;
+            border-color: #05fffb;
+        }
+
+        .dark-mode .btn-outline-secondary:hover {
+            background-color: #05fffb;
+            color: #000000;
+        }
+
+        .dark-mode .btn-primary {
+            background-color: #05fffb;
+            color: #000000;
+            border-color: #05fffb;
+        }
+
+        .dark-mode .btn-primary:hover {
+            background-color: #00c8c8;
+            border-color: #00c8c8;
+        }
+
+        #projects {
+            border-color: #05fffb;
+
+        }
+
+        .forms input [type='text'] {
+            margin-top: 40px;
+            border-color: #05fffb;
+            background-color: #000000;
+            color: #00f7ff;
+            font-size: large;
+            font-style: italic;
+            font-weight: 500;
+            forced-color-adjust: #00f7ff;
+
+        }
+
+        #btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        #btn:hover {
+            box-shadow: 0 0 10px rgba(0, 247, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                height: auto;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-md-3 sidebar">
+                <div class="card profile-card">
+                    <img src="https://avinashthangaraju7467.000webhostapp.com/new_portfolio/pro.jpg"
+                        class="card-img-top profile-image" alt="Profile Image">
+                    <div class="card-bodys">
+                        <br>
+                        <h2 class="card-title" style="text-align: center;">Avinash T</h2>
+                        <h3 class="card-subtitle mb-2" style="text-align: center;">Full Stack Developer</h3>
+                        <div class="social-icons">
+                            <a href="https://www.linkedin.com/in/avinash7467" target="_blank"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png" alt="LinkedIn"></a>
+                            <a href="https://www.instagram.com/naruto_uzumaki_7467?igsh=MXdxcjRwaml0aG10cQ=="
+                                target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+                                    alt="Instagram"></a>
+                            <a href="mailto:avinashthangaraju7467@gmail.com"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" alt="Email"></a>
+                            <a href="https://github.com/Alonewolf7467" target="_blank"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/5968/5968866.png" alt="GitHub"></a>
+                            <a href="http://t.me/Avinash7467" target="_blank"><img
+                                    src="https://cdn-icons-png.flaticon.com/512/3536/3536661.png" alt="Telegram"></a>
+                        </div>
+                        <ul class="list-group list-group-flush contact-list">
+                            <li class="list-group-item">Phone: +91-8919860292</li>
+                            <li class="list-group-item">WhatsApp: +91-8919860292</li>
+                            <li class="list-group-item">Location: Chittoor, AP</li>
+                            <li class="list-group-item">DOB: 01/04/2002</li>
+                        </ul>
+                        <center>
+                            <a href="https://1drv.ms/b/c/80aaa12a4278341e/ESXjTLRCCGtJq8rHpDQgihABU8NMIwdOecagvIbjHeg1cA"
+                                target="_blank" style="text-decoration-line: none;">
+                                <button class='glowing-btn'><span class='glowing-txt'>Down<span
+                                            class='faulty-letter'>l</span>oad</span></button>
+                            </a>
+
+                        </center>
+                    </div>
+                </div>
+            </aside>
+            <main class="col-md-9 main-content">
+                <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" id="navbar-toggle" aria-controls="navbarNav"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <ul class="navbar-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#home"> <button class='glowing-btn'><span
+                                                class='glowing-txt'>H<span
+                                                    class='faulty-letter'>O</span>ME</span></button>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#skills">
+                                        <button class='glowing-btn'><span class='glowing-txt'>Sk<span
+                                                    class='faulty-letter'>i</span>lls</span></button>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#projects">
+                                        <button class='glowing-btn'><span class='glowing-txt'>Pr<span
+                                                    class='faulty-letter'>o</span>jects</span></button>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#internships">
+                                        <button class='glowing-btn'><span class='glowing-txt'>I<span
+                                                    class='faulty-letter'>n</span>terns</span></button>
+
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#contact">
+                                        <button class='glowing-btn'><span class='glowing-txt'>Con<span
+                                                    class='faulty-letter'>n</span>ect</span></button>
+
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <button class='glowing-btn' id="dark-mode-toggle"><span class='glowing-txt'>D<span
+                                    class='faulty-letter'>a</span>rk</span></button>
+
+                    </div>
+                </nav>
+
+                <div id="content">
+                    <section id="home" class="active">
+                        <div class="card">
+                            <div class="card-body">
+                                <div style="text-align: justify;text-decoration: wavy;">
+                                    <h1 data-aos="fade-up">Hello, It's me</h1>
+                                    <h2 data-aos="fade-up" data-aos-delay="200">T Avinash</h2>
+                                </div>
+                                <div class="typewriter-card" data-aos="fade-up" data-aos-delay="400">
+                                    <p>and I Am a <span id="typewriter" style="color: red;" data-aos="fade-up"></span>
+                                    </p>
+                                </div>
+                                <p data-aos="fade-up" data-aos-delay="600">I am a passionate and driven Full Stack
+                                    Developer with a solid foundation in computer science and expertise in software
+                                    engineering, application development, and programming paradigms. Proficient in
+                                    Python, C, and Java, I excel in object-oriented programming and algorithm
+                                    design.<br><br>
+
+                                    My skills encompass a wide range of web technologies, including HTML5, CSS3,
+                                    Bootstrap, React.js, and Node.js. These technologies enable me to create responsive
+                                    and scalable web applications. Additionally, I possess expertise in database
+                                    management with PostgreSQL and cloud computing platforms.<br><br>
+
+                                    My proficiency extends to both Linux and Windows environments, ensuring seamless
+                                    cross-platform development. With a commitment to continuous learning and a passion
+                                    for technology, I am dedicated to delivering high-quality, innovative solutions..
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="skills">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 data-aos="fade-up">Skills</h2>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">HTML5</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">CSS3</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">JavaScript</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">React Js</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Node Js</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Python</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">C</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">SQL</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">PHP</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">MongoDb</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">MERN Stack</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-6 mb-4" data-aos="zoom-in">
+                                        <div class="card skill-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Linux</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="projects">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 data-aos="fade-up">Projects</h2>
+                                <div class="row">
+                                    <div class="col-md-4 mb-4" data-aos="flip-left">
+                                        <div class="card project-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Login Form</h5>
+                                                <p class="card-text">(HTML, CSS, Bootstrap, JavaScript)</p>
+                                                <p class="card-text">Basic Level</p>
+                                                <button class="btn btn-outline-primary">Open</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4" data-aos="flip-left">
+                                        <div class="card project-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Weather App</h5>
+                                                <p class="card-text">(HTML, CSS, Bootstrap, JavaScript)</p>
+                                                <p class="card-text">Basic Level</p>
+                                                <button class="btn btn-outline-primary">Open</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4" data-aos="flip-left">
+                                        <div class="card project-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Portfolio</h5>
+                                                <p class="card-text">(HTML, CSS, Bootstrap, JavaScript)</p>
+                                                <p class="card-text">Basic Level</p>
+                                                <button class="btn btn-outline-primary">Open</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4" data-aos="flip-left">
+                                        <div class="card project-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Student LMS</h5>
+                                                <p class="card-text">(MERN Stack)</p>
+                                                <p class="card-text">Hard level</p>
+                                                <button class="btn btn-outline-primary">Open</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4" data-aos="flip-left">
+                                        <div class="card project-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Detection of Cyber Attacks</h5>
+                                                <p class="card-text">(Python Packages)</p>
+                                                <p class="card-text">Hard Level</p>
+                                                <button class="btn btn-outline-primary">Open</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 mb-4" data-aos="flip-left">
+                                        <div class="card project-card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">E-Commerce</h5>
+                                                <p class="card-text">Mern Stack</p>
+                                                <p class="card-text">Hard Level</p>
+                                                <button class="btn btn-outline-primary">Open</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="internships">
+                        <div class="card">
+                            <div class="card-body" id="projects">
+                                <h2 data-aos="fade-up">Internships</h2>
+                                <div class="card mb-4" data-aos="fade-right" id="projects">
+                                    <div class="card-body">
+                                        <h3 class="card-title">[ShortTerm -Intern]</h3>
+                                        <p class="card-text">Completed Three-Month Internships on Front-End & Back-End
+                                            Web Development at 1Stop.ai.</p>
+                                        <p class="card-text">Web Development Back-end for the period 12th May, 2023 to
+                                            12th Jul, 2023</p>
+                                        <a href="https://1drv.ms/b/c/80aaa12a4278341e/EVJTyp8iTXFIl0k8umHGS3QBIiPtOQFKzLwbaH6h_nh_fA"
+                                            target="_blank" class="btn btn-primary">View Certificate</a>
+                                    </div>
+                                </div>
+                                <div class="card" data-aos="fade-left" id="projects">
+                                    <div class="card-body" id="projects">
+                                        <h3 class="card-title">[LongTerm-Intern]</h3>
+                                        <p class="card-text">Completed Three months Internships on full stack developer
+                                            [Mern stack developer] at IIDT.</p>
+                                        <p class="card-text">Web Development Back-end for the period 12th May, 2023 to
+                                            12th Jul, 2023</p>
+                                        <a href="https://drive.google.com/file/d/1BqGOtLvJ-i3J2rBp50H8R_yYBQcskJ-x/view?usp=drivesdk"
+                                            target="_blank" class="btn btn-primary">View Certificate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section id="contact">
+                        <div class="card">
+                            <div class="card-body">
+                                <h2 data-aos="fade-up">Have a Query? Connect Me!</h2>
+                                <form data-aos="fade-up" class="forms">
+                                    <div class="mb-3">
+                                        <input type="text" class="form-control" placeholder="Name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="email" class="form-control" placeholder="Email" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="tel" class="form-control" placeholder="Phone No" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <textarea class="form-control" rows="4" placeholder="Message"
+                                            required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </form>
+                                <div class="social-media mt-4" data-aos="fade-up" style="margin-bottom: 300px;">
+                                    <a href="https://github.com/Alonewolf7467" target="_blank"
+                                        style="margin-bottom: 300px;"><img
+                                            src="https://cdn-icons-png.flaticon.com/512/5968/5968866.png"
+                                            alt="GitHub"></a>
+                                    <a href="https://www.linkedin.com/in/avinash7467" target="_blank"><img
+                                            src="https://cdn-icons-png.flaticon.com/512/3536/3536505.png"
+                                            alt="LinkedIn"></a>
+                                    <a href="https://wa.me/+918919860292" target="_blank"><img
+                                            src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+                                            alt="WhatsApp"></a>
+                                    <a href="https://www.instagram.com/naruto_uzumaki_7467?igsh=MXdxcjRwaml0aG10cQ=="
+                                        target="_blank"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png"
+                                            alt="Instagram"></a>
+                                    <a href="http://t.me/Avinash7467" target="_blank"><img
+                                            src="https://cdn-icons-png.flaticon.com/512/3536/3536661.png"
+                                            alt="Telegram"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        AOS.init();
+
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', function () {
+            body.classList.toggle('dark-mode');
+        });
+
+        const typewriterElement = document.getElementById('typewriter');
+        const phrases = ['<b> [ Full Stack Developer ] ', '<b><i> [ Web Designer ] ', '<b>[ Python Programmer ]'];
+        let i = 0;
+        let j = 0;
+        let currentPhrase = [];
+        let isDeleting = false;
+        let isEnd = false;
+
+        function loop() {
+            isEnd = false;
+            typewriterElement.innerHTML = currentPhrase.join('');
+
+            if (i < phrases.length) {
+                if (!isDeleting && j <= phrases[i].length) {
+                    currentPhrase.push(phrases[i][j]);
+                    j++;
+                    typewriterElement.innerHTML = currentPhrase.join('');
+                }
+
+                if (isDeleting && j <= phrases[i].length) {
+                    currentPhrase.pop(phrases[i][j]);
+                    j--;
+                    typewriterElement.innerHTML = currentPhrase.join('');
+                }
+
+                if (j == phrases[i].length) {
+                    isEnd = true;
+                    isDeleting = true;
+                }
+
+                if (isDeleting && j === 0) {
+                    currentPhrase = [];
+                    isDeleting = false;
+                    i++;
+                    if (i === phrases.length) {
+                        i = 0;
+                    }
+                }
+            }
+            const spedUp = Math.random() * (80 - 50) + 50;
+            const normalSpeed = Math.random() * (300 - 200) + 200;
+            const time = isEnd ? 2000 : isDeleting ? spedUp : normalSpeed;
+            setTimeout(loop, time);
+        }
+
+        loop();
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').slice(1);
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(targetId).classList.add('active');
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                link.classList.add('active');
+            });
+        });
+
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            console.log('Form submitted:', { name, email, phone, message });
+            form.reset();
+            alert('Thank you for your message. I will get back to you soon!');
+        });
+    });
+    document.getElementById('navbar-toggle').addEventListener('click', function () {
+        var navbarContent = document.getElementById('navbarNav');
+        if (navbarContent.classList.contains('show')) {
+            navbarContent.classList.remove('show');
+            navbarContent.style.display = 'none';
+        } else {
+            navbarContent.classList.add('show');
+            navbarContent.style.display = 'block';
+        }
+    });
+</script>
+</body>
+
+</html>
